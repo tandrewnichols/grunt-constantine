@@ -1,4 +1,4 @@
 module.exports = function(grunt) {
-  grunt.registerMultiTask('constantineTest', require('../package').description, function() {
+  grunt.registerMultiTask('constantineTest', 'Run istanbul test', function() {
   });
 };

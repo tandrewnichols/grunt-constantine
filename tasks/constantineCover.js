@@ -1,4 +1,4 @@
 module.exports = function(grunt) {
-  grunt.registerMultiTask('constantineCover', require('../package').description, function() {
+  grunt.registerMultiTask('constantineCover', 'Run istanbul cover', function() {
   });
 };
