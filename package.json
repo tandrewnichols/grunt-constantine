@@ -2,7 +2,7 @@
   "name": "grunt-constantine",
   "description": "Generate code coverage reports with istanbul and no pain",
   "version": "1.0.0",
-  "main": "tasks/constantineCheck.js",
+  "main": "tasks/cover.js",
   "scripts": {
     "test": "grunt"
   },
@@ -35,7 +35,10 @@
       ]
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "fs-extra": "^0.30.0",
+    "istanbul": "^0.4.4"
+  },
   "devDependencies": {
     "coffee-script": "^1.10.0",
     "grunt": "^1.0.1",

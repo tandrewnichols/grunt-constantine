@@ -20,32 +20,29 @@ grunt.loadNpmTasks('grunt-constantine');
 
 Alternatively, install [task-master](http://github.com/tandrewnichols/task-master) and let it manage this for you.
 
-## The "constantineCheck" task
+## The "checkThresholds" task
 
 ### Overview
 
-In your project's Gruntfile, add a section named `constantineCheck` to the data object passed into `grunt.initConfig()`.
-## The "constantineCover" task
+In your project's Gruntfile, add a section named `checkThresholds` to the data object passed into `grunt.initConfig()`.
+
+## The "cover" task
 
 ### Overview
 
-In your project's Gruntfile, add a section named `constantineCover` to the data object passed into `grunt.initConfig()`.
-## The "constantineInstrument" task
+In your project's Gruntfile, add a section named `cover` to the data object passed into `grunt.initConfig()`.
+
+## The "instrument" task
 
 ### Overview
 
-In your project's Gruntfile, add a section named `constantineInstrument` to the data object passed into `grunt.initConfig()`.
-## The "constantineReport" task
+In your project's Gruntfile, add a section named `instrument` to the data object passed into `grunt.initConfig()`.
+
+## The "reportCoverage" task
 
 ### Overview
 
-In your project's Gruntfile, add a section named `constantineReport` to the data object passed into `grunt.initConfig()`.
-## The "constantineTest" task
-
-### Overview
-
-In your project's Gruntfile, add a section named `constantineTest` to the data object passed into `grunt.initConfig()`.
-
+In your project's Gruntfile, add a section named `reportCoverage` to the data object passed into `grunt.initConfig()`.
 
 ## Contributing
 
