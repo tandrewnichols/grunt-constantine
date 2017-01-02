@@ -52,6 +52,19 @@ module.exports = function(grunt) {
         src: ['<%= tests %>']
       }
     },
+    istanbul: {
+      unit: {
+        options: {
+          root: 'tasks',
+          dir: 'coverage',
+          simple: {
+            cmd: 'cover',
+            args: ['grunt', 'mocha'],
+            rawArgs: ['--', '--color']
+          }
+        }
+      }
+    },
     open: {
       coverage: {
         path: 'coverage/lcov-report/index.html'
