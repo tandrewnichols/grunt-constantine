@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/tandrewnichols/grunt-constantine",
   "dependencies": {
+    "async": "^2.1.4",
     "chalk": "^1.1.3",
     "fs-extra": "^1.0.0",
     "istanbul": "^0.4.5",
