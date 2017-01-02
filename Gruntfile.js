@@ -12,6 +12,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     tests: 'test/**/*.coffee',
     tasks: 'tasks/**/*.js',
+    lib: 'lib/**/*.js',
     clean: {
       coverage: ['coverage']
     },
@@ -21,7 +22,7 @@ module.exports = function(grunt) {
           configFile: '.eslint.json',
           format: 'node_modules/eslint-codeframe-formatter'
         },
-        src: ['<%= tasks %>']
+        src: ['<%= tasks %>', '<%= lib %>']
       }
     },
     shell: {
@@ -58,7 +59,7 @@ module.exports = function(grunt) {
     },
     watch: {
       tests: {
-        files: ['<%= tasks %>', '<%= tests %>'],
+        files: ['<%= tasks %>', '<%= lib %>', '<%= tests %>'],
         tasks: ['mochaTest:watch'],
         options: {
           atBegin: true
