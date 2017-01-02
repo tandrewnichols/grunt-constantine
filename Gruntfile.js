@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       }
     },
     shell: {
-      codeclimate: 'grunt run codeclimate'
+      codeclimate: 'npm run codeclimate'
     },
     travisMatrix: {
       v4: {

@@ -3,9 +3,10 @@ sudo: false
 before_install:
   - "export CODECLIMATE_REPO_TOKEN="
 install:
+  - "npm install -i npm@latest"
   - "npm install"
 script:
-  - "grunt ci"
+  - "npm run travis"
 node_js:
   - "4"
   - "5"
