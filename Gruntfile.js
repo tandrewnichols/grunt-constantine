@@ -33,7 +33,8 @@ module.exports = function(grunt) {
         test: function() {
           return /^v4/.test(process.version);
         },
-        tasks: ['istanbul:unit', 'shell:codeclimate']
+        //tasks: ['istanbul:unit', 'shell:codeclimate']
+        tasks: ['istanbul:unit']
       }
     },
     mochaTest: {
