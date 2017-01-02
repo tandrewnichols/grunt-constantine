@@ -1,31 +1,31 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-eslint');
+  grunt.loadNpmTasks('grunt-simple-istanbul');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-travis-matrix');
   grunt.loadNpmTasks('grunt-shell');
-  grunt.loadTasks('tasks');
+  grunt.loadTasks('./tasks');
 
   grunt.initConfig({
+    tests: 'test/**/*.coffee',
+    tasks: 'tasks/**/*.js',
     clean: {
       coverage: ['coverage']
     },
-    jshint: {
-      options: {
-        reporter: require('jshint-stylish'),
-        eqeqeq: true,
-        es3: true,
-        indent: 2,
-        newcap: true,
-        quotmark: 'single',
-        boss: true
-      },
-      all: ['tasks/**/*.js']
+    eslint: {
+      tasks: {
+        options: {
+          configFile: '.eslint.json',
+          format: 'node_modules/eslint-codeframe-formatter'
+        },
+        src: ['<%= tasks %>']
+      }
     },
     shell: {
-      codeclimate: 'codeclimate-test-reporter < coverage/lcov.info'
+      codeclimate: 'grunt run codeclimate'
     },
     travisMatrix: {
       v4: {
@@ -42,7 +42,13 @@ module.exports = function(grunt) {
         require: ['coffee-script/register', 'should', 'should-sinon' ]
       },
       test: {
-        src: ['test/helpers/**/*.coffee', 'test/**/*.coffee']
+        src: ['<%= tests %>']
+      },
+      watch: {
+        options: {
+          reporter: 'dot'
+        },
+        src: ['<%= tests %>']
       }
     },
     open: {
@@ -52,8 +58,8 @@ module.exports = function(grunt) {
     },
     watch: {
       tests: {
-        files: ['tasks/**/*.js', 'test/**/*.coffee'],
-        tasks: ['mocha'],
+        files: ['<%= tasks %>', '<%= tests %>'],
+        tasks: ['mochaTest:watch'],
         options: {
           atBegin: true
         }
@@ -62,6 +68,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('mocha', ['mochaTest:test']);
-  grunt.registerTask('default', ['jshint:all', 'mocha']);
-  grunt.registerTask('ci', ['jshint:all', 'mocha', 'travisMatrix']);
+  grunt.registerTask('test', ['mochaTest:test']);
+  grunt.registerTask('default', ['eslint:tasks', 'mocha']);
+  grunt.registerTask('cover', ['istanbul:unit', 'open:coverage']);
+  grunt.registerTask('ci', ['eslint:tasks', 'mocha', 'travisMatrix']);
 };
