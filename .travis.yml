@@ -1,7 +1,8 @@
 language: node_js
 sudo: false
-before_install:
-  - "export CODECLIMATE_REPO_TOKEN="
+addons:
+  code_climate:
+    repo_token: '861868a592b806e00ba483483a9d71736e33cb99a03daaf3e41d381b7977a41b'
 install:
   - "npm install -i npm@latest"
   - "npm install"
